@@ -19,3 +19,47 @@
     display: none;
   }
 }
+
+/* Two identical, non-shrinking groups make the wrap seamless at any width. */
+.ticker{word-spacing:normal}
+.ticker-track{display:flex;width:max-content;animation:ticker-scroll 44s linear infinite}
+.ticker-group{flex:none;white-space:nowrap;padding-right:24px;word-spacing:15px}
+.ticker .ticker-separator{color:var(--lime)}
+@keyframes ticker-scroll{to{transform:translateX(-50%)}}
+#about{padding-top:64px;padding-bottom:64px;align-items:start}
+#about h2{font-size:clamp(30px,3.8vw,52px);font-weight:900;line-height:1.05;letter-spacing:-1.8px;margin-bottom:24px}
+#about p{margin-top:0;margin-bottom:16px;max-width:38em}
+#about .about-lead{font-weight:700}
+.brand-story-feature{background:var(--pink);border-bottom:1px solid var(--ink)}
+.brand-story-feature h2{font-size:clamp(42px,6vw,78px);font-weight:900;line-height:1;letter-spacing:-2px}
+.brand-story-feature .button{margin-top:16px}
+.story-header{padding:76px 7% 60px;border-bottom:1px solid var(--ink);background:var(--pink)}
+.story-header h1{font-size:clamp(44px,7.5vw,104px);line-height:.98;letter-spacing:-3px;margin:28px 0;font-weight:900}
+.story-subtitle{font-size:17px;font-weight:700;max-width:40em}
+.story-body{max-width:760px;padding:64px 30px 80px;margin:auto}
+.story-passage{margin-bottom:36px}
+.story-passage p{font-size:15px;line-height:2.2;margin:0 0 12px}
+.story-signoff{border-top:1px solid var(--line);padding-top:32px;margin-top:44px}
+.story-signoff h2{font-size:52px;font-weight:900;margin-bottom:12px}
+.story-signoff p{font-weight:700;margin-bottom:32px}
+@media(max-width:700px){
+ .ticker-group{padding-right:20px;word-spacing:12px}
+ /* Keep the earlier mobile fix: no platform-dependent star decoration. */
+ .ticker .ticker-separator{display:none}
+ #about{padding-top:40px;padding-bottom:40px}
+ #about>.eyebrow{margin-bottom:22px}
+ #about h2{font-size:clamp(28px,8vw,42px);letter-spacing:-1px;margin-bottom:20px}
+ #about .text-link{gap:28px}
+ .story-header{padding:44px 6% 32px}
+ .story-header h1{font-size:clamp(38px,10vw,64px);letter-spacing:-1.5px}
+ .story-subtitle{font-size:14px;line-height:1.9}
+ .story-body{padding:40px 6% 55px}
+ .story-passage p{font-size:14px;line-height:2.1}
+ .story-signoff h2{font-size:44px}
+}
+@media(prefers-reduced-motion:reduce){
+ .ticker-track{animation:none;transform:none;width:100%}
+ .ticker-group{white-space:normal;padding:0 6%;word-spacing:8px;line-height:1.7}
+ .ticker-group:first-child{flex:1;min-width:0}
+ .ticker-group+.ticker-group{display:none}
+}
